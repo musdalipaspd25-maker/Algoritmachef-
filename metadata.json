@@ -1,0 +1,6 @@
+{
+  "name": "Algorithm Chef: Resto Automation",
+  "description": "Game edukasi algoritma berbasis simulasi manajemen dapur restoran modern untuk siswa Fase E (Kelas X SMK) Informatika.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

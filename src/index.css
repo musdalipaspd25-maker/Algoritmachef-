@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+:root {
+  --bg-cream: #FFF8EE;
+  --bg-surface: #FFFFFF;
+  --bg-kitchen-tile: #F5EDE0;
+  --text-navy: #14284B;
+  --text-muted: #4A5B78;
+  --accent-orange: #EA580C;
+  --accent-orange-hover: #C2410C;
+  --accent-orange-soft: #FFEDD5;
+  --border-subtle: #E5D9C5;
+
+  /* Kategori Blok Instruksi */
+  --block-action-bg: #EFF6FF;
+  --block-action-border: #2563EB;
+  --block-action-text: #1E3A8A;
+
+  --block-cond-bg: #F5F3FF;
+  --block-cond-border: #7C3AED;
+  --block-cond-text: #4C1D95;
+
+  --block-loop-bg: #ECFDF5;
+  --block-loop-border: #059669;
+  --block-loop-text: #064E3B;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-cream);
+    color: var(--text-navy);
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+    font-size: 1rem;
+    line-height: 1.55;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+    text-wrap: balance;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Gaya kartu kartun modern flat tanpa shadow bertumpuk berlebihan */
+.chef-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 rgba(20, 40, 75, 0.08);
+}
+
+.chef-btn-primary {
+  background-color: var(--accent-orange);
+  color: #FFFFFF;
+  border: 2px solid #9A3412;
+  box-shadow: 0 3px 0 #9A3412;
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1), background-color 140ms ease;
+}
+
+.chef-btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-orange-hover);
+  transform: translateY(-1px);
+}
+
+.chef-btn-primary:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #9A3412;
+}
+
+.chef-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chef-btn-secondary {
+  background-color: #FFFFFF;
+  color: var(--text-navy);
+  border: 2px solid #CBD5E1;
+  box-shadow: 0 3px 0 #CBD5E1;
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1), background-color 140ms ease;
+}
+
+.chef-btn-secondary:hover:not(:disabled) {
+  background-color: #F8FAFC;
+  transform: translateY(-1px);
+}
+
+.chef-btn-secondary:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #CBD5E1;
+}
+
+/* Animasi robot & dapur (compositor-only: transform & opacity) */
+@keyframes robotBob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes robotWork {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(-3deg); }
+  75% { transform: translateY(-2px) rotate(3deg); }
+}
+
+@keyframes steamRise {
+  0% { transform: translateY(4px) scale(0.9); opacity: 0; }
+  40% { opacity: 0.75; }
+  100% { transform: translateY(-14px) scale(1.15); opacity: 0; }
+}
+
+.animate-robot-bob {
+  animation: robotBob 2.4s ease-in-out infinite;
+}
+
+.animate-robot-work {
+  animation: robotWork 0.55s ease-in-out infinite;
+}
+
+.animate-steam {
+  animation: steamRise 1.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-robot-bob,
+  .animate-robot-work,
+  .animate-steam {
+    animation: none !important;
+  }
+}
+
+/* Mencegah scroll layar saat drag di perangkat sentuh */
+.touch-drag-item {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
